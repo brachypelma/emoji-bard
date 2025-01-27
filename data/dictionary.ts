@@ -25,6 +25,10 @@ export const dictionary: DictionaryEntry[] = [
     words: ['world', 'earth', 'planet', 'globe'],
   },
   {
+    emoji: '🌍',
+    words: ['world', 'earth', 'planet', 'globe'],
+  },
+  {
     emoji: '🐑',
     words: ['you', 'ewe', 'sheep', 'lamb'],
   }
