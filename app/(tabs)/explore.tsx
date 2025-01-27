@@ -5,13 +5,18 @@ import {
   TextInput,
   View
 } from 'react-native';
-
 import { styles } from '@/styles';
 import { FlatList } from 'react-native-gesture-handler';
+import { getEntriesFromEmojis } from '@/data/get-emoji-entries';
+import { DictionaryEntry } from '@/data/dictionary';
 
 export default function TabTwoScreen() {
   const [text, setText] = React.useState('')
-  
+  const [entries, setEntries] = React.useState<DictionaryEntry[]>([])
+
+  React.useEffect(() => {
+    setEntries(getEntriesFromEmojis(text))
+  }, [text])
   
   return (
     <View style={styles.main}>

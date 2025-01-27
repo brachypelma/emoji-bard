@@ -1,4 +1,4 @@
-import { dictionary } from './dictionary'
+import { dictionary, DictionaryEntry } from './dictionary'
 
 function getSubstrings(singleEmojis: string[], start = 0, emojis: string[] = []) {
   if (start === singleEmojis.length) return emojis
@@ -10,8 +10,8 @@ function getSubstrings(singleEmojis: string[], start = 0, emojis: string[] = [])
   return getSubstrings(singleEmojis, ++start, emojis)
 }
 
-export function getWordsFromEmojis(search: string) {
+export function getEntriesFromEmojis(search: string) {
   return getSubstrings(Array.from(search))
-    .map(substr => dictionary.find(({ emoji }) => emoji === substr))
-    .filter(Boolean)
+    .map((substr) => dictionary.find(({ emoji }) => emoji === substr))
+    .filter((entry): entry is DictionaryEntry => !!entry)
 }
