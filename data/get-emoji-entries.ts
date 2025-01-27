@@ -10,12 +10,8 @@ function getSubstrings(singleEmojis: string[], start = 0, emojis: string[] = [])
   return getSubstrings(singleEmojis, ++start, emojis)
 }
 
-function getEntries(substring: string) {
-  return dictionary.find(({ emoji }) => emoji === substring)
-}
-
 export function getWordsFromEmojis(search: string) {
   return getSubstrings(Array.from(search))
-    .map(substr => getEntries(substr))
+    .map(substr => dictionary.find(({ emoji }) => emoji === substr))
     .filter(Boolean)
 }
