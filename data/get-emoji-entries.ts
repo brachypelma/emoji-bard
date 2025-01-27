@@ -1,7 +1,21 @@
 import { dictionary } from './dictionary'
 
-function getWords(search: string) {
-  return dictionary
-    .filter(({ emoji }) => emoji === search)
-    .map(({ words }) => words)
+function getSubstrings(singleEmojis: string[], start = 0, emojis: string[] = []) {
+  if (start === singleEmojis.length) return emojis
+
+  for (let i = singleEmojis.length; i > start; i--) {
+    emojis.push(singleEmojis.slice(start, i).join(''))
+  }
+
+  return getSubstrings(singleEmojis, ++start, emojis)
+}
+
+function getEntries(substring: string) {
+  return dictionary.find(({ emoji }) => emoji === substring)
+}
+
+export function getWordsFromEmojis(search: string) {
+  return getSubstrings(Array.from(search))
+    .map(substr => getEntries(substr))
+    .filter(Boolean)
 }
