@@ -38,126 +38,119 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.main}>
-      <Text style={styles.title}>
-        Emoji Bard
-      </Text>
-      <View style={{ ...styles.grid, ...styles.buttonContainer }}>
-        <Pressable
-          onPress={() => toggleMode(true)}
-          style={{ ...styles.button, backgroundColor: isWord ? '#408' : '#555' }}
-        >
-          <Text style={{ ...styles.text, ...styles.buttonText }}>
-            English to Emojis
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => toggleMode(false)}
-          style={{ ...styles.button, backgroundColor: isWord ? '#555' : '#408' }}
-        >
-          <Text style={{ ...styles.text, ...styles.buttonText }}>
-            Emojis to English
-          </Text>
-        </Pressable>
-      </View>
-      <Text style={styles.text}>
-        {isWord ? 'Word' : 'Emoji'} Poem to {isWord ? 'English' : 'Word'} Translator
-      </Text>
-      <TextInput
-        style={{...styles.fullWidth, ...styles.textInput}}
-        multiline
-        numberOfLines={3}
-        placeholder="Type here to translate!"
-        onChangeText={newText => setText(newText)}
-        value={text}
-      />
-      <ScrollView style={{ ...styles.fullWidth, ...styles.fullFlex }}>
-        <View style={styles.grid}>
-          <View style={styles.item}>
-            <Text style={{...styles.text, ...styles.heading}}>
-              {isWord ? 'Words' : 'Emojis'}
+    <ScrollView>
+      <View style={styles.main}>
+        <View style={{ ...styles.grid, ...styles.buttonContainer }}>
+          <Pressable
+            onPress={() => toggleMode(true)}
+            style={{ ...styles.button, backgroundColor: isWord ? '#408' : '#555' }}
+          >
+            <Text style={{ ...styles.text, ...styles.buttonText }}>
+              English to Emojis
             </Text>
-          </View>
-          <View style={styles.item}>
-            <Text style={{...styles.text, ...styles.heading}}>
-              {isWord ? 'Emojis' : 'Words'}
+          </Pressable>
+          <Pressable
+            onPress={() => toggleMode(false)}
+            style={{ ...styles.button, backgroundColor: isWord ? '#555' : '#408' }}
+          >
+            <Text style={{ ...styles.text, ...styles.buttonText }}>
+              Emojis to English
             </Text>
-          </View>
+          </Pressable>
         </View>
-        {isWord
-          ? (
-            <FlatList
-            data={wordEntries}
-            style={styles.stepContainer}
-            renderItem={({ item }) => (
-              <View style={styles.grid}>
-                <View style={styles.item}>
-                  <Text style={styles.text}>
-                    {item.word}
-                  </Text>
-                </View>
-                <View style={{ ...styles.item, display: 'flex', flexDirection: 'row' }}>
-                  {item.emojis.map(emoji => (
-                    <Button
-                      key={emoji}
-                      title={emoji}
-                      onPress={() => {
-                        setPoem((poem) => poem + emoji)
-                      }}
-                    />
-                  ))}
-                </View>
-              </View>
-            )}
-          />
-          )
-          : (
-            <FlatList
-            data={emojiEntries}
-            style={styles.stepContainer}
-            renderItem={({ item }) => (
-              <View style={styles.grid}>
-                <View style={styles.item}>
-                  <Text style={styles.text}>
-                    {item.emoji}
-                  </Text>
-                </View>
-                <View style={{ ...styles.item, display: 'flex', flexDirection: 'row' }}>
-                  {item.words.map(word => (
-                    <Button
-                      key={word}
-                      title={word}
-                      onPress={() => {
-                        setPoem((poem) => `${poem} ${word}`)
-                      }}
-                    />
-                  ))}
-                </View>
-              </View>
-            )}
-          />)}
-      </ScrollView>
-      <Text style={{ ...styles.text, ...styles.heading }}>
-        Poem
-      </Text>
-      <View style={{ ...styles.grid, ...styles.buttonContainer }}>
         <TextInput
-          style={styles.textInput}
+          style={{...styles.fullWidth, ...styles.textInput}}
           multiline
           numberOfLines={3}
-          placeholder="Your poem will appear here"
-          onChangeText={newText => setPoem(newText)}
-          value={poem}
+          placeholder="Type here to translate!"
+          onChangeText={newText => setText(newText)}
+          value={text}
         />
-        <Pressable
-          style={{ ...styles.button, ...styles.flexShrink, backgroundColor: '#408' }}
-          onPress={async () => await Clipboard.setStringAsync(poem)}
-        >
-          <Text style={styles.buttonText}>
-            Copy
-          </Text>
-        </Pressable>
+        <View style={{ ...styles.fullWidth, ...styles.fullFlex }}>
+          <View style={styles.grid}>
+            <View style={styles.item}>
+              <Text style={{...styles.text, ...styles.heading}}>
+                {isWord ? 'Words' : 'Emojis'}
+              </Text>
+            </View>
+            <View style={styles.item}>
+              <Text style={{...styles.text, ...styles.heading}}>
+                {isWord ? 'Emojis' : 'Words'}
+              </Text>
+            </View>
+          </View>
+          {isWord
+            ? (
+              <FlatList
+              data={wordEntries}
+              style={styles.stepContainer}
+              renderItem={({ item }) => (
+                <View style={styles.grid}>
+                  <View style={styles.item}>
+                    <Text style={styles.text}>
+                      {item.word}
+                    </Text>
+                  </View>
+                  <View style={{ ...styles.item, display: 'flex', flexDirection: 'row' }}>
+                    {item.emojis.map(emoji => (
+                      <Button
+                        key={emoji}
+                        title={emoji}
+                        onPress={() => {
+                          setPoem((poem) => poem + emoji)
+                        }}
+                      />
+                    ))}
+                  </View>
+                </View>
+              )}
+            />
+            )
+            : (
+              <FlatList
+              data={emojiEntries}
+              style={styles.stepContainer}
+              renderItem={({ item }) => (
+                <View style={styles.grid}>
+                  <View style={styles.item}>
+                    <Text style={styles.text}>
+                      {item.emoji}
+                    </Text>
+                  </View>
+                  <View style={{ ...styles.item, display: 'flex', flexDirection: 'row' }}>
+                    {item.words.map(word => (
+                      <Button
+                        key={word}
+                        title={word}
+                        onPress={() => {
+                          setPoem((poem) => `${poem} ${word}`)
+                        }}
+                      />
+                    ))}
+                  </View>
+                </View>
+              )}
+            />)}
+        </View>
+        <View style={{ ...styles.grid, ...styles.buttonContainer }}>
+          <TextInput
+            style={styles.textInput}
+            multiline
+            numberOfLines={3}
+            placeholder="Your poem will appear here"
+            onChangeText={newText => setPoem(newText)}
+            value={poem}
+          />
+          <Pressable
+            style={{ ...styles.button, ...styles.flexShrink, backgroundColor: '#408' }}
+            onPress={async () => await Clipboard.setStringAsync(poem)}
+          >
+            <Text style={styles.buttonText}>
+              Copy
+            </Text>
+          </Pressable>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }

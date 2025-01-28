@@ -44,7 +44,9 @@ export const styles = StyleSheet.create({
     flexBasis: 'auto',
   },
   fullFlex: {
-    flexGrow: 2,
+    flexGrow: 1,
+    flexShrink: 0,
+    flexBasis: 'auto',
   },
   fullWidth: {
     width: '100%',
@@ -80,6 +82,7 @@ export const styles = StyleSheet.create({
     color: '#fff',
     padding: 8,
     flex: 1,
+    minHeight: 75,
   },
   title: {
     color: '#fff',
