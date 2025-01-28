@@ -1,4 +1,5 @@
 import { dictionary } from './dictionary'
+import getSubstrings from './get-substrings'
 
 export type WordEntry = {
   word: string
@@ -6,17 +7,14 @@ export type WordEntry = {
 }
 
 function getEmojis(word: string) {
-  const matches = dictionary.filter(({ words }) => words.includes(word))
-
-  return matches.length === 0
-    ? ['No matching entries']
-    : matches.map(({ emoji }) => emoji)
+  return dictionary
+    .filter(({ words }) => words.includes(word))
+    .map(({ emoji }) => emoji)
 }
 
 export function getWordEntries(search: string): WordEntry[] {
-  return search
-    .split(/\.|[—…,;?!\s]+/)
+  return getSubstrings(search.toLowerCase().split(/\.|[—…,;?!\s]+/), ' ')
     .filter(Boolean)
-    .map(word => word.toLowerCase())
     .map(word => ({ word, emojis: getEmojis(word) }))
+    .filter(({ emojis }) => emojis.length)
 }
