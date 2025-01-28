@@ -3,6 +3,27 @@ import {
 } from 'react-native';
 
 export const styles = StyleSheet.create({
+  button: {
+    borderRadius: 8,
+    color: '#fff',
+    cursor: 'pointer',
+    padding: 16,
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    gap: 16,
+    flexGrow: 0,
+    flexShrink: 1,
+    flexBasis: 'auto',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   grid: {
     flex: 1,
     flexDirection: 'row',
@@ -17,20 +38,29 @@ export const styles = StyleSheet.create({
     width: '48%',
     height: 100,
   },
+  flexShrink: {
+    flexGrow: 0,
+    flexShrink: 1,
+    flexBasis: 'auto',
+  },
+  fullFlex: {
+    flexGrow: 2,
+  },
   fullWidth: {
     width: '100%',
   },
   main: {
     backgroundColor: '#000',
     color: '#fff',
-    flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'flex-start',
     gap: 8,
     padding: 16,
     width: '100%',
     maxWidth: 600,
     margin: 'auto',
+    minHeight: '100%',
   },
   maxWidth: {
     flex: 1,

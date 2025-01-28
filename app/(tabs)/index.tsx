@@ -6,6 +6,7 @@ import {
   TextInput,
   View,
   ScrollView,
+  Pressable,
 } from 'react-native';
 import {
   getWordEntries,
@@ -41,17 +42,23 @@ export default function HomeScreen() {
       <Text style={styles.title}>
         Emoji Bard
       </Text>
-      <View style={styles.grid}>
-        <Button
-          title="English to Emojis"
+      <View style={{ ...styles.grid, ...styles.buttonContainer }}>
+        <Pressable
           onPress={() => toggleMode(true)}
-          color={isWord ? '#007AFF' : '#555'}
-        />
-        <Button
-          title="Emojis to English"
+          style={{ ...styles.button, backgroundColor: isWord ? '#408' : '#555' }}
+        >
+          <Text style={{ ...styles.text, ...styles.buttonText }}>
+            English to Emojis
+          </Text>
+        </Pressable>
+        <Pressable
           onPress={() => toggleMode(false)}
-          color={isWord ? '#555' : '#007AFF'}
-        />
+          style={{ ...styles.button, backgroundColor: isWord ? '#555' : '#408' }}
+        >
+          <Text style={{ ...styles.text, ...styles.buttonText }}>
+            Emojis to English
+          </Text>
+        </Pressable>
       </View>
       <Text style={styles.text}>
         {isWord ? 'Word' : 'Emoji'} Poem to {isWord ? 'English' : 'Word'} Translator
@@ -64,7 +71,7 @@ export default function HomeScreen() {
         onChangeText={newText => setText(newText)}
         value={text}
       />
-      <ScrollView style={styles.fullWidth}>
+      <ScrollView style={{ ...styles.fullWidth, ...styles.fullFlex }}>
         <View style={styles.grid}>
           <View style={styles.item}>
             <Text style={{...styles.text, ...styles.heading}}>
@@ -133,7 +140,7 @@ export default function HomeScreen() {
       <Text style={{ ...styles.text, ...styles.heading }}>
         Poem
       </Text>
-      <View style={styles.grid}>
+      <View style={{ ...styles.grid, ...styles.buttonContainer }}>
         <TextInput
           style={styles.textInput}
           multiline
@@ -142,10 +149,14 @@ export default function HomeScreen() {
           onChangeText={newText => setPoem(newText)}
           value={poem}
         />
-        <Button
-          title="Copy"
+        <Pressable
+          style={{ ...styles.button, ...styles.flexShrink, backgroundColor: '#408' }}
           onPress={async () => await Clipboard.setStringAsync(poem)}
-        />
+        >
+          <Text style={styles.buttonText}>
+            Copy
+          </Text>
+        </Pressable>
       </View>
     </View>
   );
