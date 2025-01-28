@@ -38,6 +38,9 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.main}>
+      <Text style={styles.title}>
+        Emoji Bard
+      </Text>
       <View style={styles.grid}>
         <Button
           title="English to Emojis"

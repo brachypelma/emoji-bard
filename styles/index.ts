@@ -52,6 +52,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
+    color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
   },
