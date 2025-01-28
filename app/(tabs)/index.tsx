@@ -62,7 +62,7 @@ export default function HomeScreen() {
           style={{...styles.fullWidth, ...styles.textInput}}
           multiline
           numberOfLines={3}
-          placeholder="Type here to translate!"
+          placeholder={`${isWord ? 'Text' : 'Emojis'} to translate to ${isWord ? 'Emojis' : 'Text'}`}
           onChangeText={newText => setText(newText)}
           value={text}
         />
