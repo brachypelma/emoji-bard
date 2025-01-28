@@ -32,8 +32,47 @@ export default function TabTwoScreen() {
         defaultValue={''}
       />
       <ScrollView style={styles.fullWidth}>
+        <View style={styles.grid}>
+          <View style={styles.item}>
+            <Text style={{...styles.text, ...styles.heading}}>
+              Emoji
+            </Text>
+          </View>
+          <View style={styles.item}>
+            <Text style={{...styles.text, ...styles.heading}}>
+              Words
+            </Text>
+          </View>
+        </View>
 
       </ScrollView>
     </View>
   );
 }
+
+/*
+        <FlatList
+          data={entries}
+          style={styles.stepContainer}
+          renderItem={({ item }) => (
+            <View style={styles.grid}>
+              <View style={styles.item}>
+                <Text style={styles.text}>
+                  {item.emoji}
+                </Text>
+              </View>
+              <View style={{ ...styles.item, display: 'flex', flexDirection: 'row' }}>
+                {item.words.map(word => (
+                  <Button
+                    key={word}
+                    title={word}
+                    onPress={() => {
+                      setPoem((word) => poem + word)
+                    }}
+                  />
+                ))}
+              </View>
+            </View>
+          )}
+        />
+*/

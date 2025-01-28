@@ -12,24 +12,27 @@ import {
   WordEntry,
 } from '@/data/get-word-entries';
 import * as Clipboard from 'expo-clipboard';
+import { getEntriesFromEmojis } from '@/data/get-emoji-entries';
+import { DictionaryEntry } from '@/data/dictionary';
 import { styles } from '@/styles';
 
 export default function HomeScreen() {
+  const [isWord, setIsWord] = React.useState(true)
   const [text, setText] = React.useState('')
-  const [entries, setEntries] = React.useState<WordEntry[]>([])
+  const [wordEntries, setWordEntries] = React.useState<WordEntry[]>([])
   const [poem, setPoem] = React.useState<string>('')
 
   React.useEffect(() => {
-    setEntries(getWordEntries(text))
+    setWordEntries(getWordEntries(text))
   }, [text])
 
   return (
     <View style={styles.main}>
       <Text style={styles.text}>
-        English to Emoji Translator
+        {isWord ? 'Word' : 'Emoji'} Poem to {isWord ? 'English' : 'Word'} Translator
       </Text>
       <TextInput
-        style={styles.textInput}
+        style={{...styles.fullWidth, ...styles.textInput}}
         multiline
         numberOfLines={3}
         placeholder="Type here to translate!"
@@ -40,17 +43,17 @@ export default function HomeScreen() {
         <View style={styles.grid}>
           <View style={styles.item}>
             <Text style={{...styles.text, ...styles.heading}}>
-              Word
+              {isWord ? 'Words' : 'Emojis'}
             </Text>
           </View>
           <View style={styles.item}>
             <Text style={{...styles.text, ...styles.heading}}>
-              Emojis
+              {isWord ? 'Emojis' : 'Words'}
             </Text>
           </View>
         </View>
         <FlatList
-          data={entries}
+          data={wordEntries}
           style={styles.stepContainer}
           renderItem={({ item }) => (
             <View style={styles.grid}>
@@ -77,18 +80,20 @@ export default function HomeScreen() {
       <Text style={{ ...styles.text, ...styles.heading }}>
         Poem
       </Text>
-      <TextInput
-        style={styles.textInput}
-        multiline
-        numberOfLines={3}
-        placeholder="Your poem will appear here"
-        onChangeText={newText => setPoem(newText)}
-        value={poem}
-      />
-      <Button
-        title="Copy"
-        onPress={async () => await Clipboard.setStringAsync(poem)}
-      />
+      <View style={styles.grid}>
+        <TextInput
+          style={styles.textInput}
+          multiline
+          numberOfLines={3}
+          placeholder="Your poem will appear here"
+          onChangeText={newText => setPoem(newText)}
+          value={poem}
+        />
+        <Button
+          title="Copy"
+          onPress={async () => await Clipboard.setStringAsync(poem)}
+        />
+      </View>
     </View>
   );
 }
