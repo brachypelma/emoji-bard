@@ -12,6 +12,6 @@ function getSubstrings(singleEmojis: string[], start = 0, emojis: string[] = [])
 
 export function getEntriesFromEmojis(search: string) {
   return getSubstrings(Array.from(search))
-    .map((substr) => dictionary.find(({ emoji }) => emoji === substr))
+    .map(substr => dictionary.find(({ emoji }) => emoji === substr))
     .filter((entry): entry is DictionaryEntry => !!entry)
 }
