@@ -32,6 +32,9 @@ export const styles = StyleSheet.create({
     maxWidth: 600,
     margin: 'auto',
   },
+  maxWidth: {
+    flex: 1,
+  },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
@@ -47,5 +50,9 @@ export const styles = StyleSheet.create({
     color: '#fff',
     padding: 8,
     flex: 1,
-  }
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });
