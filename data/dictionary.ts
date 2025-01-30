@@ -14,7 +14,7 @@ export const dictionary: DictionaryEntry[] = [
   },
   {
     emoji: '👎',
-    words: ['no', 'disagree', 'dislike', 'bad', 'ugly', 'bad'],
+    words: ['no', 'disagree', 'dislike', 'bad', 'don\'t like', 'do not like'],
   },
   {
     emoji: '👌',
@@ -31,5 +31,10 @@ export const dictionary: DictionaryEntry[] = [
   {
     emoji: '🐑',
     words: ['you', 'ewe', 'sheep', 'lamb'],
-  }
+  },
+  {
+    emoji: '😀',
+    words: ['happy', 'glad', 'smile', 'grin', 'beam', 'beaming'],
+  },
+  
 ]

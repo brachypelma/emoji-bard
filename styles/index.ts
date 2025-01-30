@@ -3,6 +3,14 @@ import {
 } from 'react-native';
 
 export const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    minHeight: '100%',
+    height: '100%',
+  },
   button: {
     borderRadius: 8,
     color: '#fff',
