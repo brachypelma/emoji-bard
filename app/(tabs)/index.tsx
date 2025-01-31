@@ -100,7 +100,9 @@ export default function HomeScreen() {
                           onPress={() => {
                             setPoem((poem) => poem + emoji)
                           }}>
-                         {emoji}
+                          <Text style={styles.buttonText}>
+                            {emoji}
+                          </Text>
                         </Pressable>
                       ))}
                     </View>
@@ -127,7 +129,9 @@ export default function HomeScreen() {
                           onPress={() => {
                             setPoem((poem) => `${poem} ${word}`)
                           }}>
-                          {word}
+                          <Text style={styles.buttonText}>
+                            {word}
+                          </Text>
                         </Pressable>
                       ))}
                     </View>
