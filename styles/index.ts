@@ -63,8 +63,13 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   item: {
-    width: '48%',
     height: 100,
+  },
+  leftItem: {
+    width: '32%',
+  },
+  rightItem: {
+    width: '66%',
   },
   flexShrink: {
     flexGrow: 0,

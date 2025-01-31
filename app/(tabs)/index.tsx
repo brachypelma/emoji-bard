@@ -87,12 +87,12 @@ export default function HomeScreen() {
                 style={styles.stepContainer}
                 renderItem={({ item }) => (
                   <View style={styles.grid}>
-                    <View style={styles.item}>
+                    <View style={{ ...styles.leftItem }}>
                       <Text style={styles.text}>
                         {item.word}
                       </Text>
                     </View>
-                    <View style={{ ...styles.item, ...styles.buttons, ...styles.resultButtons }}>
+                    <View style={{ ...styles.rightItem, ...styles.buttons, ...styles.resultButtons }}>
                       {item.emojis.map(emoji => (
                         <Pressable
                           key={emoji}
@@ -116,12 +116,12 @@ export default function HomeScreen() {
                 style={styles.stepContainer}
                 renderItem={({ item }) => (
                   <View style={styles.grid}>
-                    <View style={styles.item}>
+                    <View style={{ ...styles.leftItem }}>
                       <Text style={styles.text}>
                         {item.emoji}
                       </Text>
                     </View>
-                    <View style={{ ...styles.item, ...styles.buttons, ...styles.resultButtons }}>
+                    <View style={{ ...styles.rightItem, ...styles.buttons, ...styles.resultButtons }}>
                       {item.words.map(word => (
                         <Pressable
                           key={word}
