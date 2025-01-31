@@ -11,6 +11,11 @@ export const styles = StyleSheet.create({
     minHeight: '100%',
     height: '100%',
   },
+  centered: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   button: {
     borderRadius: 8,
     color: '#fff',
@@ -20,6 +25,17 @@ export const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  emojiButton: {
+    backgroundColor: '#408',
+    borderRadius: 8,
+    margin: 8,
+    padding: 8,
+  },
+  buttons: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
   },
   buttonContainer: {
     gap: 16,
