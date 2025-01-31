@@ -38,6 +38,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
   },
+  resultButtons: {
+    flexWrap: 'wrap',
+  },
   buttonContainer: {
     gap: 16,
     flexGrow: 0,

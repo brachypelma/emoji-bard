@@ -92,7 +92,7 @@ export default function HomeScreen() {
                         {item.word}
                       </Text>
                     </View>
-                    <View style={{ ...styles.item, ...styles.buttons }}>
+                    <View style={{ ...styles.item, ...styles.buttons, ...styles.resultButtons }}>
                       {item.emojis.map(emoji => (
                         <Pressable
                           key={emoji}
@@ -121,7 +121,7 @@ export default function HomeScreen() {
                         {item.emoji}
                       </Text>
                     </View>
-                    <View style={{ ...styles.item, ...styles.buttons }}>
+                    <View style={{ ...styles.item, ...styles.buttons, ...styles.resultButtons }}>
                       {item.words.map(word => (
                         <Pressable
                           key={word}
