@@ -26,8 +26,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  emojiButton: {
+  resultButton: {
     backgroundColor: '#408',
+    color: '#fff',
     borderRadius: 8,
     margin: 8,
     padding: 8,

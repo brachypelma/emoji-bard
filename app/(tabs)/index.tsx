@@ -96,7 +96,7 @@ export default function HomeScreen() {
                       {item.emojis.map(emoji => (
                         <Pressable
                           key={emoji}
-                          style={{ ...styles.centered, ...styles.emojiButton }}
+                          style={{ ...styles.centered, ...styles.resultButton }}
                           onPress={() => {
                             setPoem((poem) => poem + emoji)
                           }}>
@@ -119,15 +119,16 @@ export default function HomeScreen() {
                         {item.emoji}
                       </Text>
                     </View>
-                    <View style={{ ...styles.item, display: 'flex', flexDirection: 'row' }}>
+                    <View style={{ ...styles.item, ...styles.buttons }}>
                       {item.words.map(word => (
-                        <Button
+                        <Pressable
                           key={word}
-                          title={word}
+                          style={{ ...styles.centered, ...styles.resultButton }}
                           onPress={() => {
                             setPoem((poem) => `${poem} ${word}`)
-                          }}
-                        />
+                          }}>
+                          {word}
+                        </Pressable>
                       ))}
                     </View>
                   </View>
