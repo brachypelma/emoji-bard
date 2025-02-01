@@ -6276,43 +6276,6 @@ export const dictionary: DictionaryEntry[] = [
     words:['sparkle'],
   },
   {
-    emoji: '©️',
-    words:['copyright'],
-  },
-  {
-    emoji: '®️',
-    words:['registered'],
-  },
-  {
-    emoji: '™️',
-    words:['trade mark'],
-  },
-
-  {
-    emoji: '🏴  Color & Identity',
-    words:['Color & Identity'],
-  },
-  {
-    emoji: '🌍  Africa',
-    words:['Africa'],
-  },
-  {
-    emoji: '🌎  The Americas',
-    words:['The Americas'],
-  },
-  {
-    emoji: '🌏  Asia & The Middle East',
-    words:['Asia & The Middle East'],
-  },
-  {
-    emoji: '🌍  Europe',
-    words:['Europe'],
-  },
-  {
-    emoji: '🌏  Oceania, Island Nations & Territories',
-    words:['Oceania, Island Nations & Territories'],
-  },
-  {
     emoji: '🏁',
     words:['Chequered Flag'],
   },
