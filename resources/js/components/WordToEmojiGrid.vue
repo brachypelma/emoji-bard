@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { WordEntry } from '../lib/get-word-entries';
 
+defineEmits(['addToPoem'])
+
 const { entries } = defineProps({
   entries: Array<WordEntry>,
 })
@@ -13,7 +15,14 @@ const { entries } = defineProps({
         {{ entry.word }}
       </td>
       <td class="py-2 w-1/2">
-        {{ entry.emojis.join(' ') }}
+        <button
+          v-for="emoji in entry.emojis"
+          :key="emoji"
+          class="mr-2 cursor-pointer"
+          @click="$emit('addToPoem', emoji)"
+        >
+          {{ emoji }}
+        </button>
       </td>
     </tr>
   </tbody>

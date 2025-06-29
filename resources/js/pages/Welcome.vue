@@ -35,12 +35,16 @@ const setEntries = () => {
     emojiEntries.value = getEntriesFromEmojis(text.value)
     wordEntries.value = []
   }
-  console.log(wordEntries.value, emojiEntries.value)
+}
+
+const add = (word : string) => {
+  poem.value += word
+  console.log(word, poem.value)
 }
 </script>
 
 <template>
-  <Head title="Welcome">
+  <Head @add-to-poem="add" title="Welcome">
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
   </Head>
