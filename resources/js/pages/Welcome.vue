@@ -2,8 +2,10 @@
 import { Head, Link } from '@inertiajs/vue3';
 import { getWordEntries, WordEntry } from '../lib/get-word-entries';
 import { getEntriesFromEmojis } from '../lib/get-emoji-entries';
-import { DictionaryEntry } from '../lib/data/dictionary';
+import { DictionaryEntry } from '../lib/dictionary';
 import { ref } from 'vue';
+import WordToEmojiGrid from '@/components/WordToEmojiGrid.vue';
+import EmojisToWordsGrid from '@/components/EmojisToWordsGrid.vue';
 
 const isWord = ref(true)
 const text = ref('')
@@ -17,6 +19,23 @@ const toggleWord = (isWordVal: boolean) => {
   wordEntries.value = []
   emojiEntries.value = []
   poem.value = ''
+}
+
+const setEntries = () => {
+  if (!text.value) {
+    wordEntries.value = []
+    emojiEntries.value = []
+    return
+  }
+
+  if (isWord.value) {
+    wordEntries.value = getWordEntries(text.value)
+    emojiEntries.value = []
+  } else {
+    emojiEntries.value = getEntriesFromEmojis(text.value)
+    wordEntries.value = []
+  }
+  console.log(wordEntries.value, emojiEntries.value)
 }
 </script>
 
@@ -77,6 +96,7 @@ const toggleWord = (isWordVal: boolean) => {
           class="w-full bg-[#3E3E3A] text-white p-2"
           v-model="text"
           :placeholder="`${isWord ? 'Text' : 'Emojis'} to translate to ${isWord ? 'Emojis' : 'Text'}`"
+          @blur="setEntries"
         ></textarea>
       </div>
       <table>
@@ -90,10 +110,15 @@ const toggleWord = (isWordVal: boolean) => {
             </th>
           </tr>
         </thead>
-        <tbody>
-
-        </tbody>
+        <WordToEmojiGrid v-if="isWord" :entries="wordEntries" />
+        <EmojisToWordsGrid v-else :entries="emojiEntries" />
       </table>
+      <div>
+        <textarea
+          class="w-full bg-[#3E3E3A] text-white p-2"
+          v-model="poem"
+          placeholder="Poem"></textarea>
+      </div>
     </main>
     <footer>
     </footer>
