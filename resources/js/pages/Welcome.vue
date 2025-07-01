@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { getWordEntries, WordEntry } from '../lib/get-word-entries';
+import { getWordEntries } from '../lib/get-word-entries';
 import { getEntriesFromEmojis } from '../lib/get-emoji-entries';
-import { DictionaryEntry } from '../lib/dictionary';
-import { ref } from 'vue';
 import WordToEmojiGrid from '@/components/WordToEmojiGrid.vue';
 import EmojisToWordsGrid from '@/components/EmojisToWordsGrid.vue';
+import { useTranslatorStore } from '@/store/translator';
+import { storeToRefs } from 'pinia';
 
-const isWord = ref(true)
-const text = ref('')
-const wordEntries = ref<WordEntry[]>([])
-const emojiEntries = ref<DictionaryEntry[]>([])
-const poem = ref('')
+const {
+  isWord,
+  text,
+  wordEntries,
+  emojiEntries,
+  poem,
+} = storeToRefs(useTranslatorStore());
 
 const toggleWord = (isWordVal: boolean) => {
   isWord.value = isWordVal
@@ -37,14 +39,13 @@ const setEntries = () => {
   }
 }
 
-const add = (word : string) => {
-  poem.value += word
-  console.log(word, poem.value)
+const copyToClipboard = (text: string) => {
+  navigator.clipboard.writeText(text)
 }
 </script>
 
 <template>
-  <Head @add-to-poem="add" title="Welcome">
+  <Head title="Welcome">
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
   </Head>
@@ -122,6 +123,11 @@ const add = (word : string) => {
           class="w-full bg-[#3E3E3A] text-white p-2"
           v-model="poem"
           placeholder="Poem"></textarea>
+        <button
+          :class="'w-full bg-[#3E3E3A] color-[#EDEDEC] border-[#EDEDEC] p-2 cursor-pointer'"
+          @click="copyToClipboard(poem)">
+          Copy
+        </button>
       </div>
     </main>
     <footer>

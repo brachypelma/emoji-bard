@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { WordEntry } from '../lib/get-word-entries';
+import { useTranslatorStore } from '@/store/translator';
+import { storeToRefs } from 'pinia';
 
-defineEmits(['addToPoem'])
+const {
+  poem,
+} = storeToRefs(useTranslatorStore());
 
 const { entries } = defineProps({
   entries: Array<WordEntry>,
@@ -19,7 +23,7 @@ const { entries } = defineProps({
           v-for="emoji in entry.emojis"
           :key="emoji"
           class="mr-2 cursor-pointer"
-          @click="$emit('addToPoem', emoji)"
+          @click="poem += emoji"
         >
           {{ emoji }}
         </button>

@@ -1,5 +1,11 @@
 <script lang="ts" setup>
 import { DictionaryEntry } from '../lib/dictionary';
+import { useTranslatorStore } from '@/store/translator';
+import { storeToRefs } from 'pinia';
+
+const {
+  poem,
+} = storeToRefs(useTranslatorStore());
 
 const { entries } = defineProps({
   entries: Array<DictionaryEntry>,
@@ -13,7 +19,14 @@ const { entries } = defineProps({
         {{ entry.emoji }}
       </td>
       <td class="py-2 w-1/2">
-        {{ entry.words.join(', ') }}
+        <button
+          v-for="word in entry.words"
+          :key="word"
+          class="mr-2 cursor-pointer"
+          @click="poem += ` ${word}`"
+        >
+          {{ word }}
+        </button>
       </td>
     </tr>
   </tbody>
