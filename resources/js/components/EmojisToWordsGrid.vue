@@ -22,7 +22,7 @@ const { entries } = defineProps({
         <button
           v-for="word in entry.words"
           :key="word"
-          class="mr-2 cursor-pointer"
+          class="mx-2 px-2 bg-[#3E3E3A] cursor-pointer"
           @click="poem += ` ${word}`"
         >
           {{ word }}

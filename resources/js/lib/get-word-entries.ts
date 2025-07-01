@@ -16,5 +16,6 @@ export function getWordEntries(search: string): WordEntry[] {
   return getSubstrings(search.toLowerCase().split(/\.|[—…,;?!\s]+/), ' ')
     .filter(Boolean)
     .map(word => ({ word, emojis: getEmojis(word) }))
-    .filter(({ emojis }) => emojis.length)
+    .filter(({ word, emojis }) =>
+      emojis.length || word.split(/\.|[—…,;?!\s]+/).length === 1)
 }

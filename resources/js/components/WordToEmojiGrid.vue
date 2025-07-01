@@ -22,7 +22,7 @@ const { entries } = defineProps({
         <button
           v-for="emoji in entry.emojis"
           :key="emoji"
-          class="mr-2 cursor-pointer"
+          class="mx-2 px-2 bg-[#3E3E3A] cursor-pointer"
           @click="poem += emoji"
         >
           {{ emoji }}

@@ -108,10 +108,10 @@ const copyToClipboard = (text: string) => {
         <thead>
           <tr>
             <th>
-                {{ isWord ? 'Words' : 'Emojis' }}
+              {{ isWord ? 'Words' : 'Emojis' }}
             </th>
             <th>
-                {{ isWord ? 'Emojis' : 'Words' }}
+              {{ isWord ? 'Emojis' : 'Words' }}
             </th>
           </tr>
         </thead>
